@@ -1,0 +1,20 @@
+body{
+    display: flex;
+    margin: 30px;
+    background: seashell;
+    width: 40vw;
+    height: 40vh;
+    user-select: none;
+
+}
+.page{
+    width: 100px;
+    height: 100px;
+    background: coral;
+    border: 2px solid green;
+    display: flex;
+    margin: 10px;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+}

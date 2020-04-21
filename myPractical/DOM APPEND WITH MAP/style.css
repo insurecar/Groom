@@ -1,0 +1,35 @@
+.page{
+    width: 80vw;
+    height: 90vh;
+    background:cornsilk;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.list{
+    width: 90%;
+    height: 100px;
+    background: coral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: chartreuse;
+    font-size: 30px;
+    border-radius: 10px;
+    user-select: none;
+}
+
+.list2{
+    width: 90%;
+    height: 100px;
+    background: lawngreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 30px;
+    border-radius: 10px;
+    user-select: none;
+}

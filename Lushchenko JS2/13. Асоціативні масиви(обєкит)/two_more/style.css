@@ -1,0 +1,9 @@
+select option[value = 'red']{
+    color: red;
+}
+select option[value = 'green']{
+    color:lime;
+}
+select option[value = 'blue']{
+    color: blue;
+}
