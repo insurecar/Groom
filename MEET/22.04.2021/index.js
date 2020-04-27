@@ -35,3 +35,31 @@ const user = {
 createUser(user)
     .then(response => response.json())
     .then(data => console.log(data));
+
+function updateUserId(userId, newUserData) {
+    const pr = fetch(`${baseUrl}/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify(newUserData)
+    });
+
+    return pr;
+}
+
+updateUserId('3', { email: 'a@a.com' })
+    .then(result => result.json())
+    .then(data => console.log(data))
+
+
+function deleteUser(userId) {
+    return fetch(`${baseUrl}/${userId}`, {
+        method: 'DELETE'
+    })
+}
+
+
+deleteUser('delete')
+    .then(response => response.json())
+    .then(data => console.log(data))
