@@ -1,0 +1,19 @@
+npm init
+npm install
+
+npm i -D jest
+
+npm i -D @babel/core @babel/cli @babel/preset-env jest sass npm-run-all babel-loader
+
+npm i -D webpack webpack-cli
+npm run build
+
+npm i -S core-js@3 run-all npm-run-all react react-dom
+
+npm i -D file-loader css-loader sass-loader style-loader url-loader
+npm i -D html-webpack-plugin mini-css-extract-plugin
+
+npm i -D eslint eslint-config-airbnb-base eslint-plugin-import 
+npm i -g create-react-app
+create-react-app my-app
+npm install -g serve
