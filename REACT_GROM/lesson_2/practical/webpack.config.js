@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
   const config = {
     entry: "./src/index.js",
     output: {
-      filename: "bundle.js",
+      filename: "index.js",
     },
     module: {
       rules: [
