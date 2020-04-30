@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 class GoodButton extends Component {
   handleClick() {
-    alert("Good job!");
+    alert(event.target.textContent);
   }
   render() {
     return (
       <button className="fancy-button" onClick={this.handleClick}>
-        Click me!
+        Good job!
       </button>
     );
   }
