@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Colors from "./Color";
+import Colors from "./Colors";
 import "./index.scss";
 
 const rootElement = document.querySelector("#root");
