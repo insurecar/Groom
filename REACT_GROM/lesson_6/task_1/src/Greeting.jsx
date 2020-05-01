@@ -1,13 +1,11 @@
-import React from "react";
-import UserGreeting from "./UserGreeting";
-import GuestGreeting from "./GuestGreeting";
+import React, { Component } from "react";
+import GuestGreeting from "GuestGreeting.jsx";
+import UserGreeting from "UserGreeting.jsx";
 
 const Greeting = (props) => {
-  const { isLoggedIn } = props;
-  if (isLoggedIn) {
+  if (props.isLoggedIn) {
     return <UserGreeting />;
   }
   return <GuestGreeting />;
 };
-
 export default Greeting;
