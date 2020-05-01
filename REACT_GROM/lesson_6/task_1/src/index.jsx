@@ -1,8 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Auth from "./Auth";
-import "./index.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Auth from './Auth'
+import './index.scss';
 
-const root = document.querySelector("#root");
+const root = document.querySelector('#root')
 
-ReactDOM.render(<Auth />, root);
+ReactDOM.render(
+  <Auth />,
+  root
+);
+
