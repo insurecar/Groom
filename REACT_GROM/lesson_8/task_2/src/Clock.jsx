@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 
+const getTime = (timezone) => {
+  const currentTimeZone = new Date().getTimezoneOffset() / 60;
+  const locationTimeZone = new Date(
+    new Date().setHours(new Date().getHours() + currentTimeZone + timezone)
+  );
+  return locationTimeZone;
+};
+
 class Clock extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +20,7 @@ class Clock extends Component {
     this.interval = setInterval(
       () =>
         this.setState({
-          date: new Date(),
+          offset: getTime(this.props.offset).toLocaleTimeString("en-us"),
         }),
       1000
     );
@@ -23,7 +31,12 @@ class Clock extends Component {
   }
 
   render() {
-    return <div>{this.state.date.toLocaleTimeString()}</div>;
+    return (
+      <div className="clock">
+        <div className="clock__location">{this.state.location}</div>
+        <div className="clock__time">{this.state.offset}</div>
+      </div>
+    );
   }
 }
 
