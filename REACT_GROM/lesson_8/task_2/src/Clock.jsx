@@ -12,22 +12,21 @@ class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
+      location: props.location,
+      offset: getTime(props.offset).toLocaleTimeString("en-US"),
     };
   }
 
   componentDidMount() {
-    this.interval = setInterval(
-      () =>
-        this.setState({
-          offset: getTime(this.props.offset).toLocaleTimeString("en-us"),
-        }),
-      1000
-    );
+    this.intervalID = setInterval(() => {
+      this.setState({
+        offset: getTime(this.props.offset).toLocaleTimeString("en-US"),
+      });
+    }, 1000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    clearInterval(this.intervalID);
   }
 
   render() {
