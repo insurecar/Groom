@@ -33,7 +33,7 @@ class Dimensions extends Component {
 
   render() {
     return (
-      <div className="dimension">{`${this.state.width} px - ${this.state.height} px`}</div>
+      <div className="dimension">{`${this.state.width}px - ${this.state.height}px`}</div>
     );
   }
 }
