@@ -26,7 +26,7 @@ class Auth extends Component {
   render() {
     const { isLoggedIn } = this.state;
     if (isLoggedIn) {
-      return <Logout onLogout={this.onLogout} />;
+      return <Logout onLog={this.onLogout} />;
     }
     return <Login onLogin={this.onLogin} />;
   }
