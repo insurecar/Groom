@@ -12,9 +12,9 @@ class Life extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log(
-      "shouldComponentUpdate(nextProps, nextState): decide to render or not to render"
-    ); //Або запускає render() або ні
-    return nextProps.number % 2;
+      `shouldComponentUpdate(nextProps, nextState): decide to render or not to render`
+    );
+    return true;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,7 +30,7 @@ class Life extends Component {
   }
 
   render() {
-    console.log("=> render");
+    console.log("return React element to build DOM");
     return <div className="number">{this.props.number}</div>;
   }
 }
