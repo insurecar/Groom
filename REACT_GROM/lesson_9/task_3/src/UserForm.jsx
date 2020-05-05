@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class UserForm extends Component {
-  handleSubmit = (event) => {
+  onSubmit = (event) => {
     event.preventDefault();
     const formData = [...new FormData(this.formRef)].reduce(
       (acc, [name, value]) => ({ ...acc, [name]: value }),
