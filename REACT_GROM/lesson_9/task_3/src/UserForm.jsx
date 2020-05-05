@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
-class UserForm extends Component {
-  onSubmit = (event) => {
+class UserForm extends React.Component {
+  handleSubmit = (event) => {
     event.preventDefault();
     const formData = [...new FormData(this.formRef)].reduce(
       (acc, [name, value]) => ({ ...acc, [name]: value }),
       {}
     );
-
-    console.log(formData);
+    this.props.onSubmit(formData);
   };
 
   setRef = (node) => {
-    // this.setState({ formRef: node });
     this.formRef = node;
   };
 
@@ -45,7 +43,7 @@ class UserForm extends Component {
           <label className="form-label" id="occupation" htmlFor="occupation">
             Occupation
           </label>
-          <select className="occupation" className="form-input">
+          <select name="occupation" className="form-input">
             <option value="london">London</option>
             <option value="new-york">New York</option>
             <option value="coconut">Sidney</option>
