@@ -4,14 +4,14 @@ import Logout from "./Logout";
 import Spinner from "./Spinner";
 
 class Auth extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      isLoggedIn: false,
-      isLoading: false,
-    };
-  }
+  state = {
+    isLoggedIn: false,
+    isLoading: false,
+  };
+  // }
 
   onLogin = () => {
     setTimeout(() => {
