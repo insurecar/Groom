@@ -1,13 +1,10 @@
 import React from "react";
 
-function Spinner(props) {
-  const { size } = props;
-
+function Spinner({ size }) {
   const styles = {
     width: size,
     height: size,
   };
-  console.log(props);
   return <span style={styles} className="spinner"></span>;
 }
 
