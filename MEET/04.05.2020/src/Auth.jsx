@@ -1,19 +1,28 @@
 import React, { Component } from "react";
 import Login from "./Login";
 import Logout from "./Logout";
+import Spinner from "./Spinner";
 
 class Auth extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isLoggedIn: true,
+      isLoggedIn: false,
+      isLoading: false,
     };
   }
 
   onLogin = () => {
+    setTimeout(() => {
+      this.setState({
+        isLoggedIn: true,
+        isLoading: false,
+      });
+    }, 2000);
+
     this.setState({
-      isLoggedIn: true,
+      isLoading: true,
     });
   };
 
@@ -24,7 +33,12 @@ class Auth extends Component {
   };
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, isLoading } = this.state;
+
+    if (isLoading) {
+      return <Spinner size={26} />;
+    }
+
     if (isLoggedIn) {
       return <Logout onLog={this.onLogout} />;
     }
