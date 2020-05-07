@@ -1,12 +1,18 @@
-import React from "react";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
 
-const Square = (props) => {
+const Square = props => {
   return (
-    <button className="square" onClick={props.onClick}>
+    <button
+      className="square"
+      onClick={props.onClick}
+    >
       {props.value}
     </button>
   );
-};
+}
+
 
 class Board extends React.Component {
   renderSquare(i) {
@@ -45,11 +51,9 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null),
-        },
-      ],
+      history: [{
+        squares: Array(9).fill(null),
+      }],
       stepNumber: 0,
       xIsNext: true,
     };
@@ -62,13 +66,11 @@ class Game extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? "X" : "O";
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
-      history: history.concat([
-        {
-          squares: squares,
-        },
-      ]),
+      history: history.concat([{
+        squares: squares
+      }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
@@ -77,9 +79,10 @@ class Game extends React.Component {
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: step % 2 === 0,
+      xIsNext: (step % 2) === 0,
     });
   }
+
 
   render() {
     const history = this.state.history;
@@ -87,7 +90,9 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ? "Go to move #" + move : "Go to game start";
+      const desc = move ?
+        'Go to move #' + move :
+        'Go to game start';
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -97,9 +102,9 @@ class Game extends React.Component {
 
     let status;
     if (winner) {
-      status = "Winner: " + winner;
+      status = 'Winner: ' + winner;
     } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
     return (
       <div className="game">
@@ -137,5 +142,12 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
+// ========================================
+
+ReactDOM.render(
+  <Game />,
+  document.getElementById('root')
+);
 
 export default Game;
