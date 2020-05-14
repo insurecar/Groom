@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Expand extends Component {
   state = {
-    isOpen: true,
+    isOpen: false,
   };
 
   toggleExpand = () => {
