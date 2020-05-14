@@ -7,7 +7,6 @@ class EvenNumbers extends Component {
 
   render() {
     const { title, number } = this.props;
-    console.log(this.props);
 
     return (
       <div className="number">
