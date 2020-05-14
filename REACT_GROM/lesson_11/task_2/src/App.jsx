@@ -1,33 +1,36 @@
-import React from "react";
-import Numbers from "./Numbers";
-import EvenNumbers from "./EvenNumbers";
-import OddNumbers from "./OddNumbers";
+import React, { Component } from "react";
+import Dialog from "./Dialog";
 
-class App extends React.Component {
+class App extends Component {
   state = {
-    number: 0,
+    isOpen: false,
   };
 
-  componentDidMount() {
-    this.intervalId = setInterval(() => {
-      this.setState({
-        number: this.state.number + 1,
-      });
-    }, 1000);
-  }
+  hideDiaolog = () => {
+    this.setState({
+      isOpen: false,
+    });
+  };
 
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
-  }
+  showDiaolog = () => {
+    this.setState({
+      isOpen: true,
+    });
+  };
 
   render() {
-    const { number } = this.state;
     return (
       <div className="app">
-        <OddNumbers title="Odd numbers" number={number} />
-        <EvenNumbers title="Event numbers" number={number} />
-        <Numbers title="All numbers" number={number} />
-        <Numbers title="Just 17" number={17} />
+        <button className="btn" onClick={this.showDiaolog}>
+          Show
+        </button>
+        <Dialog
+          isOpen={this.state.isOpen}
+          onClose={this.hideDiaolog}
+          title="some title"
+        >
+          <p>Some text</p>
+        </Dialog>
       </div>
     );
   }
