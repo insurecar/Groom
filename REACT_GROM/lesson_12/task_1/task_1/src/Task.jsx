@@ -1,7 +1,7 @@
 import React from "react";
 import className from "classnames";
 
-const Task = ({ id, done, text, onChange }) => {
+const Task = ({ id, done, text, onChange, onDelete }) => {
   return (
     <li className={className("list-item", { "list-item_done": done })}>
       <input
@@ -11,7 +11,10 @@ const Task = ({ id, done, text, onChange }) => {
         onChange={() => onChange(id)}
       />
       <span className="list-item__text">{text}</span>
-      <button className="list-item__delete-btn"></button>
+      <button
+        className="list-item__delete-btn"
+        onClick={() => onDelete(id)}
+      ></button>
     </li>
   );
 };

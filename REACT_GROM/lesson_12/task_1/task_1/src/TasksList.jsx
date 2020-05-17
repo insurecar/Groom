@@ -41,6 +41,11 @@ class TasksList extends Component {
     this.setState({ tasks: updatedTasks });
   };
 
+  handleTaskDelete = (id) => {
+    const updatedTasks = this.state.tasks.filter((task) => task.id !== id);
+    this.setState({ tasks: updatedTasks });
+  };
+
   render() {
     const sortedList = this.state.tasks.slice().sort((a, b) => a.done - b.done);
 
@@ -52,6 +57,7 @@ class TasksList extends Component {
             <Task
               key={task.id}
               {...task}
+              onDelete={this.handleTaskDelete}
               onChange={this.handleTaskStatusChange}
             />
           ))}
