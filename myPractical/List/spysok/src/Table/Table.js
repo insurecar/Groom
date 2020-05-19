@@ -4,7 +4,7 @@ export default (props) => (
   <table className="table">
     <thead>
       <tr>
-        <th onClick={props.onSort.bind(null, "id")}>
+        <th onClick={() => props.onSort("id")}>
           ID {props.sortField === "id" ? <small>{props.sort}</small> : null}
         </th>
         <th onClick={props.onSort.bind(null, "firstName")}>

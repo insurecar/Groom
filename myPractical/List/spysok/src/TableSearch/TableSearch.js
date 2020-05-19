@@ -8,7 +8,7 @@ export default (props) => {
   };
 
   return (
-    <div className="input-group mb-3 mt-4">
+    <div className="input-group mb-3 mt-5">
       <div className="input-group-prepend">
         <button
           className="btn btn-outline-secondary"
