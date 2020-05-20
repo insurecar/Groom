@@ -36,9 +36,9 @@ class App extends Component {
     const data = _.orderBy(clonedData, sortField, sort);
 
     this.setState({
-      data,
-      sort,
-      sortField,
+      data: data,
+      sort: sort,
+      sortField: sortField,
     });
   };
 
