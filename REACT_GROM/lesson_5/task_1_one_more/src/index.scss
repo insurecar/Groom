@@ -30,3 +30,147 @@ body {
     border-color: orange;
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__button {
+    width: 48px;
+    height: 48px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    background: transparent;
+    font-weight: 700;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &__value {
+    margin: 16px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colors {
+  &__button {
+    width: 48px;
+    height: 48px;
+    margin: 16px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggler {
+  padding: 8px;
+  border: 2px solid coral;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picker {
+  &__title {
+    text-align: center;
+    height: 32px;
+  }
+
+  &__button {
+    width: 48px;
+    height: 48px;
+    margin: 16px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+
+    &_border {
+      border: 3px solid red;
+    }
+    &_coral {
+      background-color: #ff7f50;
+    }
+
+    &_aqua {
+      background-color: #00ffff;
+    }
+
+    &_bisque {
+      background-color: #ffe4c4;
+    }
+  }
+}
+.picker__button_border {
+  border: 3px solid red;
+  width: 100px;
+  height: 100px;
+}
