@@ -17,6 +17,7 @@ class Header {
 }
 
 const header = new Header("Hello", "React");
+Header.hello("2");
 
 header.render("#root");
 console.log(header);
