@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 
-const Mailbox = ({ message }) => {
-  //   const span =
-  //     message > 0 ? <span className="mailbox__count">{message} </span> : null;
-
+const Mailbox = ({ unreadMessage }) => {
   return (
     <div className="mailbox">
-      <span className="mailbox__text">messages </span>
-      {message}
+      <span className="mailbox__text">Message</span>
+      {unreadMessage.length > 0 && (
+        <span className="mailbox__count">{unreadMessage.length}</span>
+      )}
     </div>
   );
 };
