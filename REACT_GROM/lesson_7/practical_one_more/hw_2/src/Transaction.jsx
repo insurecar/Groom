@@ -2,8 +2,6 @@ import React from "react";
 import moment from "moment";
 //{ from, to, amount, rate, time }
 const Transaction = (props) => {
-  console.log(props.vasia[2].amount);
-
   return (
     <ul className="transactions">
       {props.vasia.map(({ id, time, from, to, rate, amount }) => (
