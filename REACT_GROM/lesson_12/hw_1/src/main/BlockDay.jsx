@@ -10,15 +10,15 @@ const BlockDays = ({
   events,
   showEventData,
   dateEvent,
-  blink
+  blink,
 }) => {
-  let idForHour = dayId;
-  const blockDay = generateNumbersRange(0, 6).map(arg => {
+  const blockDay = generateNumbersRange(0, 6).map((arg) => {
     let idHour = moment()
       .startOf("isoWeek")
-      .add(idForHour, "day")
+      .add(dayId, "day")
       .format("YYYY-MM-DD");
-    idForHour++;
+    dayId++;
+    console.log(arg);
 
     const redline =
       idHour === moment().format("YYYY-MM-DD") ? <Redline /> : null;

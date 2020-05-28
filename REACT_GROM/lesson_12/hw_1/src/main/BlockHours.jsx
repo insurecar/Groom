@@ -4,13 +4,13 @@ import moment from "moment";
 
 const BlockHours = ({ hourId, events, showPopup, showEventData, blink }) => {
   let idForHour = hourId; //YYYY-MM-DD
-  const BlockHour = generateNumbersRange(0, 23).map(arg => {
+  const BlockHour = generateNumbersRange(0, 23).map((arg) => {
     const hour = `0${arg}`.slice(-2);
     const nextHour = `0${arg + 1}`.slice(-2);
     const id = `${idForHour}-${hour}`;
 
     let findedEvent = events.find(
-      event => event.startEvent.slice(0, -3) === id
+      (event) => event.startEvent.slice(0, -3) === id
     );
 
     let event;
@@ -24,10 +24,9 @@ const BlockHours = ({ hourId, events, showPopup, showEventData, blink }) => {
       const endMinutes = +findedEvent.endTimeEvent.slice(-2);
       const startMinutes = +findedEvent.timeEvent.slice(-2);
 
-      const heightEvent = `${endHour * 60 -
-        startHour * 60 +
-        endMinutes -
-        startMinutes}px`;
+      const heightEvent = `${
+        endHour * 60 - startHour * 60 + endMinutes - startMinutes
+      }px`;
 
       const classEvent = blink == blinkData ? "event blink1" : "event";
 
@@ -35,7 +34,7 @@ const BlockHours = ({ hourId, events, showPopup, showEventData, blink }) => {
         <div
           className={classEvent}
           style={{ marginTop: `${marginTopEvent}`, height: `${heightEvent}` }}
-          onClick={e => showEventData(e, findedEvent)}
+          onClick={(e) => showEventData(e, findedEvent)}
         >
           <span>{findedEvent.nameEvent}</span>
           <span>

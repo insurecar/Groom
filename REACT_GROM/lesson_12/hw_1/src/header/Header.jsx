@@ -13,7 +13,7 @@ const Header = ({ showPopup, nextWeek, prevWeek, currentWeek, addDay }) => {
     <div className="header">
       <div className="navigation">
         <AddButton showPopup={showPopup} />
-        <TodayButton onClick={currentWeek} />
+        <TodayButton onWeek={currentWeek} />
         <NavigationButtons onClick={nextWeek} onClickPrev={prevWeek} />
         <div className="current-month">{currentData}</div>
       </div>
