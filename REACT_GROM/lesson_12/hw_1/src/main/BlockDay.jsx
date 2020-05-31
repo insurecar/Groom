@@ -1,5 +1,4 @@
 import React from "react";
-import { generateNumbersRange } from "../utilities/utilities";
 import BlockHours from "./BlockHours";
 import Redline from "./RedLine";
 import moment from "moment";
@@ -12,13 +11,12 @@ const BlockDays = ({
   dateEvent,
   blink,
 }) => {
-  const blockDay = generateNumbersRange(0, 6).map((arg) => {
+  const blockDay = [...Array(7).keys()].map((arg) => {
     let idHour = moment()
       .startOf("isoWeek")
       .add(dayId, "day")
       .format("YYYY-MM-DD");
     dayId++;
-    console.log(arg);
 
     const redline =
       idHour === moment().format("YYYY-MM-DD") ? <Redline /> : null;

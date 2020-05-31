@@ -1,12 +1,11 @@
 import React from "react";
-import { generateNumbersRange } from "../utilities/utilities";
 
 const TimesDay = () => {
-  const timesBlock = generateNumbersRange(1, 23).map(arg => {
-    const correctTime = `0${arg}`;
+  const timesBlock = [...Array(24).keys()].splice(1, 24).map((num) => {
+    const correctTime = `0${num}`;
 
     return (
-      <div key={arg} className="time__day-hour">{`${correctTime.slice(
+      <div key={num} className="time__day-hour">{`${correctTime.slice(
         -2
       )}:00`}</div>
     );

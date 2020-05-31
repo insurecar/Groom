@@ -1,10 +1,9 @@
 import React from "react";
-import { generateNumbersRange } from "../utilities/utilities";
 import moment from "moment";
 
 const BlockHours = ({ hourId, events, showPopup, showEventData, blink }) => {
   let idForHour = hourId; //YYYY-MM-DD
-  const BlockHour = generateNumbersRange(0, 23).map((arg) => {
+  const BlockHour = [...Array(24).keys()].map((arg) => {
     const hour = `0${arg}`.slice(-2);
     const nextHour = `0${arg + 1}`.slice(-2);
     const id = `${idForHour}-${hour}`;
