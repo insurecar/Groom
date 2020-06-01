@@ -13,6 +13,7 @@ module.exports = (env, argv) => {
     output: {
       path: __dirname + "/review_build",
       filename: "bundle.js",
+      publicPath: "/",
     },
     module: {
       rules: [
