@@ -7,12 +7,12 @@ class User extends Component {
     user: null,
   };
 
-  //   componentDidMount() {
-  //     console.log("==>componentDidMount");
-  //     console.log(this.props);
+  componentDidMount() {
+    console.log("==>componentDidMount");
+    console.log(this.props);
 
-  //     this.fetchUser(this.props.match.params.userId);
-  //   }
+    this.fetchUser(this.props.match.params.userId);
+  }
 
   componentDidUpdate(prevProps) {
     console.log(prevProps);
