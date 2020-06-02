@@ -22,7 +22,7 @@ class User extends Component {
     }
   }
 
-  fetchUser = (userId) => {
+  fetchUser = async (userId) => {
     fetch(`${baseURL}/${userId}`)
       .then((response) => response.json())
       .then((data) =>
