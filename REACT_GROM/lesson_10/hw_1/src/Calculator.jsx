@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TemperatureInput from "./TemperatureInput";
-
-import BoilingVerdict from "./BoilingVerdict";
+import { boiling, toCelsius, toFahrenheit, tryConvert } from "./Func";
+// import BoilingVerdict from "./BoilingVerdict";
 
 class Calculator extends Component {
   state = {
@@ -9,55 +9,43 @@ class Calculator extends Component {
     scale: "c",
   };
 
-  handleCelsiusChange = (temperature) => {
+  handleCelsiusChange = (inputTemp) => {
     this.setState({
       scale: "c",
-      temperature,
+      temperature: inputTemp,
     });
   };
 
-  handleFahrenheitChange = (temperature) => {
+  handleFahrenheitChange = (inputTemp) => {
     this.setState({
       scale: "f",
-      temperature,
+      temperature: inputTemp,
     });
   };
 
   render() {
-    const toCelsius = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;
-
-    const toFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
-
-    const tryConvert = (temperature, convert) => {
-      const input = parseFloat(temperature);
-      if (Number.isNaN(input)) {
-        return "";
-      }
-      const output = convert(input);
-      const rounded = Math.round(output * 1000) / 1000;
-      return rounded.toString();
-    };
-
     const { scale, temperature } = this.state;
+
     const celsius =
       scale === "f" ? tryConvert(temperature, toCelsius) : temperature;
-
+    12;
     const fahrenheit =
       scale === "c" ? tryConvert(temperature, toFahrenheit) : temperature;
 
     return (
       <div>
         <TemperatureInput
-          scale="cel"
+          school="cel"
           temperature={celsius}
           onTemperatureChange={this.handleCelsiusChange}
         />
         <TemperatureInput
-          scale="far"
+          school="far"
           temperature={fahrenheit}
           onTemperatureChange={this.handleFahrenheitChange}
         />
-        <BoilingVerdict celsius={parseFloat(celsius)} />
+        {boiling(celsius)}
+        {/* <BoilingVerdict celsius={parseFloat(celsius)} /> */}
       </div>
     );
   }

@@ -11,11 +11,12 @@ class TemperatureInput extends Component {
       far: "Фарадей",
     };
 
-    const { temperature, scale } = this.props;
+    const { temperature, school } = this.props;
+    console.log(school);
 
     return (
       <fieldset>
-        <legend>Введіть температуру в градусах {scaleNames[scale]}:</legend>
+        <legend>Введіть температуру в градусах {scaleNames[school]}:</legend>
         <input value={temperature} onChange={this.handleChange} />
       </fieldset>
     );
