@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from "react";
 
-function ConnectionStatus() {
-  const [status, setStatus] = useState(online);
-
-  function updateOnlineStatus(e) {
-    setStatus(e.target.navigator.onLine);
-  }
+const ConnectionStatus = () => {
+  const [status, setStatus] = useState("online");
 
   useEffect(() => {
-    window.addEventListener("online", updateOnlineStatus);
-    return () => {
-      window.removeEventListener("online", updateOnlineStatus);
+    const isOnline = (e) => {
+      setStatus(e.type);
     };
-  });
+    window.addEventListener("online", isOnline);
 
-  useEffect(() => {
-    window.addEventListener("offline", updateOnlineStatus);
-    return () => {
-      window.removeEventListener("offline", updateOnlineStatus);
+    const isOffline = (e) => {
+      setStatus(e.type);
     };
-  });
+    window.addEventListener("offline", isOffline);
 
-  return (
-    <div className={status ? "status" : "status status_offline"}>
-      {status ? "online" : "offline"}
-    </div>
-  );
-}
+    return () => {
+      window.removeEventListener("online", isOnline);
+      window.removeEventListener("offline", isOffline);
+    };
+  }, []);
+
+  const offlineClass = status === "offline" && "status_offline";
+
+  return <div className={`status ${offlineClass}`}>{status}</div>;
+};
 
 export default ConnectionStatus;
