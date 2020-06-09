@@ -4,4 +4,4 @@ import "./index.scss";
 
 const rootElement = document.querySelector("#root");
 
-ReactDOM.render(<div>dfd</div>, rootElement);
+ReactDOM.render(<App />, rootElement);
