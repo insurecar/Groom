@@ -1,29 +1,37 @@
-import React, { Component } from "react";
-import ThemedButton from "./ThemedButton";
-import { themes, ThemeContext } from "./themes-contex";
+import React, { useState, useEffect } from "react";
 
-class App extends Component {
-  state = {
-    theme: themes.light,
-  };
+const App = () => {
+  const [inputData, setData] = useState("Hello");
 
-  toggleTheme = () => {
-    const newTheme =
-      this.state.theme === themes.dark ? themes.light : themes.dark;
-    this.setState({
-      theme: newTheme,
+  const handleChange = ({ target }) => {
+    setData({
+      inputData: target.value,
     });
+    console.log(inputData);
   };
-  render() {
-    return (
-      <div>
-        <ThemeContext.Provider value={this.state.theme}>
-          <ThemedButton onClick={this.toggleTheme}>Dynamic Theme</ThemedButton>
-        </ThemeContext.Provider>
 
-          <ThemedButton onClick={this.toggleTheme}>Default Theme</ThemedButton>
-      </div>
-    );
-  }
-}
+  const onHandleClick = () => {
+    const input = document.querySelector(".qwerty");
+    // input.innerHTML += inputData;
+    setData({});
+    console.log(inputData);
+    input.innerHTML = inputData;
+  };
+
+  useEffect(() => {
+    // onHandleClick(inputData);
+    let btn = document.querySelector("button");
+    btn.addEventListener("click", onHandleClick);
+
+    // return () => btn.removeEventListener("click", onHandleClick);
+  }, []);
+
+  return (
+    <div>
+      <button>Push</button>
+      <input type="text" onChange={handleChange} />
+      <div className="qwerty"></div>
+    </div>
+  );
+};
 export default App;
