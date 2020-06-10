@@ -16,6 +16,7 @@ const User = () => {
   if (!userData) return null;
 
   const { avatar_url, name, location } = userData;
+  console.log(name);
 
   return (
     <div className="user">

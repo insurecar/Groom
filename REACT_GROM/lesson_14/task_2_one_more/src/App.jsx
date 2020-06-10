@@ -18,10 +18,12 @@ class App extends Component {
               </li>
             </ul>
             <Switch>
+              <Route path="/:userId">
+                <User />
+              </Route>
               <Route exact path="/">
                 <span>Select a user please</span>
               </Route>
-              <Route path="/:userId" component={User} />
             </Switch>
           </BrowserRouter>
         </div>
