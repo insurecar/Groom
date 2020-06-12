@@ -3,7 +3,7 @@ import { createStore } from "redux";
 const incrementAction = {
   type: "INCREMENT",
 };
-dfvjhnsvhtrbrtjbrwtoji;
+
 const decrementAction = {
   type: "DECREMENT",
 };
