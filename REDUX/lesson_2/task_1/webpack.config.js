@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: [".js", ".jsx"],
     },
-    entry: "./src/index.jsx",
+    entry: "./src/index.js",
     output: {
       path: __dirname + "/review_build",
       filename: "bundle.js",
