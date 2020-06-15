@@ -1,6 +1,7 @@
 import store from "./store";
 import { increment, decrement, reset } from "./counter.actions";
 import { addUser, deleteUser, updateUser } from "./users.actions";
+import "./index.scss";
 
 store.subscribe(() => console.log(store.getState()));
 
