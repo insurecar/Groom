@@ -3,11 +3,12 @@ import Pagination from "./Pagination";
 import User from "./User";
 import { connect } from "react-redux";
 import * as paginationActions from "./user.actions";
+import {usersListSelectors, currnetPageSelectors} from './user.selectors'
 
 const UserList = ({ users, goNext, goPrev, currentPage, itemsPerPage }) => {
   const displayUsers = users.slice(
-    currentPage * itemsPerPage,
-    currentPage * itemsPerPage + 3
+    currentPage * 3,
+    currentPage * 3 + 3
   );
   const userList = displayUsers.map((user) => <User key={user.id} {...user} />);
   return (
@@ -17,7 +18,7 @@ const UserList = ({ users, goNext, goPrev, currentPage, itemsPerPage }) => {
         goPrev={goPrev}
         totalItems={users.length}
         currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
+
       />
       <ul className="users">{userList}</ul>
     </div>
@@ -26,9 +27,8 @@ const UserList = ({ users, goNext, goPrev, currentPage, itemsPerPage }) => {
 
 const mapState = (state) => {
   return {
-    users: state.usersList,
-    currentPage: state.currentPage,
-    itemsPerPage: state.itemsPerPage,
+    users: usersListSelectors(state),
+    currentPage: currnetPageSelectors(state),
   };
 };
 
