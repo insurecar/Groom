@@ -7,14 +7,13 @@ class App extends Component {
 
     return (
       <div>
-        <input type="text" className="trackInput" />
-        <button className="addTrack">AddTrack</button>
-        <ul className="list">
-          {this.props.testStore.map((elem) => (
-            <li key={Math.random()}>{elem}</li>
+        <input type="text" />
+        <button>Add track</button>
+        <ul>
+          {this.props.testStore.map((track) => (
+            <li key={Math.random()}>{track}</li>
           ))}
         </ul>
-        <div id="root"></div>
       </div>
     );
   }
@@ -23,6 +22,6 @@ class App extends Component {
 export default connect(
   (state) => ({
     testStore: state,
-  }),
+  }), //mapState
   (dispatch) => ({})
 )(App);

@@ -1,54 +1,29 @@
 import { createStore } from "redux";
+import "./index.scss";
 
-const playlist = (state = [], action) => {
-  switch (action.type) {
-    case "ADD_TRACK":
-      return [...state, action.payload];
-    default:
-      return state;
-  }
-};
-
+const ADD_TRACK = "ADD_TRACK";
 const store = createStore(playlist);
 
-console.log(store);
-
-store.subscribe(() => {
-  console.log("subscribe", store.getState());
-});
-
-store.dispatch({
-  type: "ADD_TRACK",
-  payload: "Smels like spirit",
-});
+function playlist(store = [], action) {
+  switch (action.type) {
+    case ADD_TRACK:
+      return [...store, action.payload];
+    default:
+      return store;
+  }
+}
 
 store.dispatch({
   type: "ADD_TRACK",
-  payload: "Enter Sadman",
+  payload: "Smell like ten spirit",
+});
+store.dispatch({
+  type: "ADD_TRACK",
+  payload: "Tommorow land",
+});
+store.dispatch({
+  type: "ADD_TRACK",
+  payload: "Enter Sadmen",
 });
 
-// import { createStore } from "redux";
-
-// const playlist = (state = [], action) => {
-//   switch (action.type) {
-//     case "ADD_TRACK":
-//       return [...state, action.payload];
-//     default:
-//       return state;
-//   }
-// };
-
-// const store = createStore(playlist);
-
-// store.subscribe(() => {
-//   console.log("subscribe ", store.getState());
-// });
-
-// store.dispatch({
-//   type: "ADD_TRACK",
-//   payload: "Smels like spirit",
-// });
-// store.dispatch({
-//   type: "ADD_TRACK",
-//   payload: "Enter Sandman",
-// });
+console.log(store.getState());
