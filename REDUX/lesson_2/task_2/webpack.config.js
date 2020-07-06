@@ -6,23 +6,25 @@ const webpack = require("webpack");
 module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
   const config = {
+    resolve: {
+      extensions: [".js", ".jsx"],
+    },
     entry: "./src/index.js",
     output: {
+      path: __dirname + "/review_build",
       filename: "bundle.js",
       publicPath: "/",
     },
     module: {
       rules: [
         {
-          test: /.js?x$/,
+          test: /.jsx?$/,
           use: ["babel-loader"],
         },
         {
           test: /.s?css$/,
           use: [
-            isProduction
-              ? MiniCssExtractPlugin.loader
-              : "style-loader",
+            isProduction ? MiniCssExtractPlugin.loader : "style-loader",
             "css-loader",
             "sass-loader",
           ],
@@ -36,11 +38,9 @@ module.exports = (env, argv) => {
         template: "./src/index.html",
       }),
     ],
-    resolve: {
-      extensions: [".js", ".jsx"],
-    },
     devServer: {
       hot: true,
+      port: 9007,
       historyApiFallback: true,
     },
   };
