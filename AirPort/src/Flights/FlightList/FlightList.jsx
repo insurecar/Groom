@@ -1,59 +1,110 @@
-import React from "react";
 import moment from "moment";
-
-const body = {
-  arivals: [
-    {
-      ID: 2000031308473,
-      term: "A",
-      timeToStand: "2020-06-25T04:20:00Z",
-      timeLandFact: "2020-06-25T23:20:00Z",
-
-      codeShareData: [
-        {
-          codeShare: "B2848",
-          airline: {
-            en: {
-              name: "Belavia",
-              logoName:
-                "https://api.iev.aero/media/airline/files/5ab0f18c6946b170090875.png",
-            },
-          },
-        },
-      ],
-    },
-  ],
-  departure: [
-    {
-      ID: 2000031308473,
-      term: "A",
-      timeToStand: "2020-06-25T04:20:00Z",
-      timeTakeofFact: "2020-06-25T04:20:00Z",
-
-      codeShareData: [
-        {
-          codeShare: "B2848",
-          logo: "/media/airline/files/5ab0f18c6946b170090875.png",
-          airline: {
-            en: {
-              name: "Belavia",
-              logoName:
-                "https://api.iev.aero/media/airline/files/5ab0f18c6946b170090875.png",
-            },
-          },
-        },
-      ],
-    },
-  ],
-};
-
-// console.log(moment().local("ru").format("MMMM Do YYYY, h:mm:ss a"));
-// console.log(moment.utc("2020-06-25T23:20:00Z").format("LT") + 3);
-// console.log(new Date("2020-06-25T23:20:00Z").getUTCHours() + 3);
+import React, { useState } from "react";
+import { getFlightsFetch } from "../../gateWays";
 
 const FlightList = () => {
+  const allFlights = {
+    flightsArrival: [
+      {
+        id: "",
+        terminal: "",
+        localTime: "",
+        destination: "",
+        airline: "",
+        logo: "",
+        status: "",
+        flight: "",
+      },
+    ],
+    flightsDeparture: [
+      {
+        id: "",
+        terminal: "",
+        localTime: "",
+        destination: "",
+        airline: "",
+        logo: "",
+        status: "",
+        flight: "",
+      },
+    ],
+  };
+  const [state, setState] = useState(allFlights);
+
+  const my = () => {
+    getFlightsFetch().then((data) => {
+      moment.locale("uk");
+      const todayDeparture = data.body.departure.filter((el) => {
+        console.log(
+          "Дата польоту: " + el.timeDepExpectCalc,
+          moment(el.timeDepExpectCalc).format("DD-MM-YYYY"),
+          "Час польоту: " + moment(el.timeDepExpectCalc).format("LT")
+        );
+        // console.log(
+        //   "Сьогоднішеня дата" + moment().format("DD-MM-YYYY")
+        // );
+
+        return (
+          moment(el.timeDepExpectCalc).format("DD-MM-YYYY") ===
+          moment().format("DD-MM-YYYY")
+        );
+      });
+      const todayArrival = data.body.arrival.filter(
+        (el) =>
+          moment(el.timeArrExpectCalc).format("DD-MM-YYYY") ===
+          moment().format("DD-MM-YYYY")
+      );
+      const flightsDeparture = todayDeparture.map((flight) => {
+        const {
+          ID,
+          term,
+          timeDepExpectCalc,
+          timeTakeofFact,
+          airline,
+          codeShareData,
+        } = flight;
+        return {
+          id: ID,
+          terminal: term,
+          localTime: moment(timeDepExpectCalc).format("LT"),
+          destination: flight["airportToID.name_en"],
+          airline: airline.en.name,
+          logo: airline.en.logoName,
+          status: timeTakeofFact || "On time",
+          flight: codeShareData[0].codeShare,
+        };
+      });
+      const flightsArrival = todayArrival.map((flight) => {
+        const {
+          ID,
+          term,
+          timeLandCalc,
+          timeLandFact,
+          airline,
+          codeShareData,
+        } = flight;
+        return {
+          id: ID,
+          terminal: term,
+          localTime: moment(timeLandCalc).format("LT"),
+          destination: flight["airportFromID.name_en"],
+          airline: airline.en.name,
+          logo: airline.en.logoName,
+          status: !timeLandFact
+            ? "On time"
+            : moment(timeLandFact).format("LT"),
+          flight: codeShareData[0].codeShare,
+        };
+      });
+      setState({ flightsArrival, flightsDeparture });
+    });
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    my();
+  });
   return (
     <div className="">
+      <button onClick={my}>Push</button>
       <table className="table">
         <thead>
           <tr>
@@ -66,26 +117,26 @@ const FlightList = () => {
           </tr>
         </thead>
         <tbody>
-          {body.arivals.map((el) => (
-            <tr key={el.ID}>
-              <td>{el.term}</td>
-              <td>{moment(el.timeToStand).local().format("LT")}</td>
-              <td>{el.codeShareData[0].airline.en.name}</td>
-              <td>{moment(el.timeLandFact).local().format("LT")}</td>
+          {state.flightsArrival.map((el) => (
+            <tr key={el.id}>
+              <td>{el.terminal}</td>
+              <td>{el.localTime}</td>
+              <td>{el.destination}</td>
+              <td>{el.status}</td>
               <td style={{ display: "flex" }}>
                 <img
                   style={{ width: "100px", height: "50px" }}
-                  src={el.codeShareData[0].airline.en.logoName}
+                  src={el.logo}
                   alt=""
                 />
                 <span
                   style={{ display: "flex", alignItems: "center" }}
                 >
-                  {el.codeShareData[0].airline.en.name}
+                  {el.airline}
                 </span>
               </td>
 
-              <td>{el.codeShareData[0].codeShare}</td>
+              <td>{el.flights}</td>
             </tr>
           ))}
         </tbody>
