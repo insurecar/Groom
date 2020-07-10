@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, createContext } from "react";
 import "./App.scss";
 import Car from "./Car/Car";
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import Counter from "./Counter/Counter";
 
-export const ClickedContext = React.createContext(false);
+export const ClickedContext = createContext(false);
 
 class App extends Component {
   constructor(props) {
