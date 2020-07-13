@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.page {
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.flights{
+  &__navigation{
+    display: flex;
+    &_btn{
+       color: red;
+       width: 100px;
+       margin: 10px;
+     }
+  }
+}
+
+.table{
+  width: 90%;
+  height: 90%;
+  border: 5px;
+}
+td{
+  border: 3px;
+}
