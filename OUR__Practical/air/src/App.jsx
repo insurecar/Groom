@@ -25,10 +25,10 @@ const App = ({ match }) => {
         </button>
         <Switch>
           <Route path="/departure">
-            <Flight>Vasia - {flights.id1}</Flight>
+            <Flight>Some - {flights.id1}</Flight>
           </Route>
           <Route path="/arrivals">
-            <Flight>Andriy - {flights.id2}</Flight>
+            <Flight>Body - {flights.id2}</Flight>
           </Route>
         </Switch>
       </BrowserRouter>
