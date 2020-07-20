@@ -6,12 +6,18 @@ const text2 = "Another exciting text.";
 
 class Page extends Component {
   state = {
-    text: "",
+    text: null,
   };
 
   setText = (text) => {
     this.setState({
       text,
+    });
+  };
+
+  clearText = () => {
+    this.setState({
+      text: "",
     });
   };
 
@@ -26,7 +32,7 @@ class Page extends Component {
           <button className="btn" onClick={() => this.setText(text2)}>
             Text 2
           </button>
-          <button className="btn" onClick={() => this.setText("")}>
+          <button className="btn" onClick={this.clearText}>
             Clear
           </button>
         </div>
