@@ -1,35 +1,29 @@
-import React, { Component } from 'react';
-import Online from './Online'
-import Offline from './Offline'
+import React, { Component } from "react";
+import Online from "./Online";
+import Offline from "./Offline";
 
-const Status = ({ isOnline }) => {
-  return (
-    <div class="status">
-        {isOnline
-        ? <Online />
-        : <Offline />
-        }
-    </div>
-  )
+class Status extends Component {
+  state = {
+    isOnline: false,
+  };
+
+  refreshOnline = () => {
+    this.setState({
+      isOnline: true,
+    });
+  };
+
+  render() {
+    return (
+      <div className="status">
+        {this.state.isOnline ? (
+          <Online />
+        ) : (
+          <Offline onclick={this.refreshOnline} />
+        )}
+      </div>
+    );
+  }
 }
-
-// class Status extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       isOnline: false,
-//     }
-//   }
-//   render() {
-//     return (
-//       <div class="status">
-//         {this.state.isOnline
-//         ? <Online />
-//         : <Offline />
-//         }
-//       </div>
-//     )
-//   }
-// }
 
 export default Status;

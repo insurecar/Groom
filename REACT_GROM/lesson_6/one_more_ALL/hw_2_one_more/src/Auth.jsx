@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import Login from './Login';
-import Logout from './Logout'
-import Spinner from './Spinner';
+import React, { Component } from "react";
+import Login from "./Login";
+import Logout from "./Logout";
+import Spinner from "./Spinner";
 
 class Auth extends Component {
   state = {
     isLogin: false,
     isLoading: false,
-  }
+  };
 
   onLogin = () => {
     this.setState({
@@ -20,22 +20,22 @@ class Auth extends Component {
         isLoading: false,
       });
     }, 2000);
-  }
-  
+  };
+
   onLogout = () => {
     this.setState({
-      isLogin: false
-    })
-  }
+      isLogin: false,
+    });
+  };
 
   render() {
     if (!this.state.isLogin) {
-      return <Login onLogin={this.onLogin}/>
-    } 
+      return <Login onLogin={this.onLogin} />;
+    }
     if (this.state.isLoading) {
-      return <Spinner size={'30px'}/>
-    }else {
-      return <Logout onLogout={this.onLogout} />
+      return <Spinner size={"30px"} />;
+    } else {
+      return <Logout onLogout={this.onLogout} />;
     }
   }
 }
