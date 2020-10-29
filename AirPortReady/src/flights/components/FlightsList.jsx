@@ -11,6 +11,7 @@ const FlightsList = ({ departureList, arrivalList }) => {
   let listToRender = direction === "arrivals" ? arrivalList : departureList;
 
   if (fltNo && listToRender) {
+    console.log(1);
     const newList = listToRender.filter(
       (flight) =>
         `${flight["carrierID.IATA"]}${flight.fltNo}` === fltNo ||
