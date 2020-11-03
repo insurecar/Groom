@@ -1,8 +1,8 @@
-export const ADD_USER = "USERS/ADD_USER";
-export const DELETE_USER = "USERS/DELETE_USER";
-export const UPDATE_USER = "USERS/UPDATE_USER";
+const ADD_USER = "USER/ADD_USER";
+const DELETE_USER = "USER/DELETE_USER";
+const UPDATE_USER = "USER/UPDATE_USER";
 
-export const addUser = (userData) => {
+const addUser = (userData) => {
   return {
     type: ADD_USER,
     payload: {
@@ -11,7 +11,7 @@ export const addUser = (userData) => {
   };
 };
 
-export const deleteUser = (userId) => {
+const deleteUser = (userId) => {
   return {
     type: DELETE_USER,
     payload: {
@@ -19,7 +19,8 @@ export const deleteUser = (userId) => {
     },
   };
 };
-export const updateUser = (userId, userData) => {
+
+const updateUser = (userId, userData) => {
   return {
     type: UPDATE_USER,
     payload: {
@@ -28,3 +29,5 @@ export const updateUser = (userId, userData) => {
     },
   };
 };
+
+export { ADD_USER, DELETE_USER, UPDATE_USER, addUser, deleteUser, updateUser };

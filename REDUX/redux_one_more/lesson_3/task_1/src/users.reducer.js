@@ -4,34 +4,27 @@ const initialState = {
   usersList: [],
 };
 
-export const usersReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_USER: {
+    case ADD_USER:
       return {
         ...state,
         usersList: state.usersList.concat(action.payload.userData),
       };
-    }
-
-    case DELETE_USER: {
-      const newList = state.usersList.filter(
-        (user) => user.id !== action.payload.userId
-      );
+    case DELETE_USER:
       return {
         ...state,
-        usersList: newList,
+        usersList: state.usersList.filter((user) => user.id !== action.payload.userId),
       };
-    }
     case UPDATE_USER: {
-      const newList = state.usersList.map((user) => {
-        if (user.id === action.payload.userId) {
-          return {
-            ...user,
-            ...action.payload.userData,
-          };
-        }
-        return user;
-      });
+      const newList = state.usersList.map((user) =>
+        user.id === action.payload.userId
+          ? {
+              ...user,
+              ...action.payload.userData,
+            }
+          : user
+      );
       return {
         ...state,
         usersList: newList,
@@ -43,4 +36,4 @@ export const usersReducer = (state = initialState, action) => {
   }
 };
 
-export default usersReducer;
+export { userReducer };

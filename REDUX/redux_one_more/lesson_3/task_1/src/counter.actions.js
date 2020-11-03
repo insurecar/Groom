@@ -1,21 +1,23 @@
-export const INCREMENT = "COUNTER/INCREMENT";
-export const DECREMENT = "COUNTER/DECREMENT";
-export const RESET = "COUNTER/RESET";
+const DECREMENT_COUNTER = "COUNTER/DECREMENT_COUNTER";
+const INCREMENT_COUNTER = "COUNTER/INCREMENT_COUNTER";
+const RESET_COUNTER = "COUNTER/RESET_COUNTER";
 
-export const increment = () => {
+const decrementCount = () => {
   return {
-    type: INCREMENT,
+    type: DECREMENT_COUNTER,
   };
 };
 
-export const decrement = () => {
+const incrementCount = () => {
   return {
-    type: DECREMENT,
+    type: INCREMENT_COUNTER,
   };
 };
 
-export const reset = () => {
+const resetCount = () => {
   return {
-    type: RESET,
+    type: RESET_COUNTER,
   };
 };
+
+export { DECREMENT_COUNTER, INCREMENT_COUNTER, RESET_COUNTER, decrementCount, incrementCount, resetCount };
