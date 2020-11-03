@@ -22,17 +22,17 @@ body {
   justify-content: center;
 
   &__button {
-      height: 48px;
-      border: 2px solid grey;
-        border-radius: 8px;
-      background: transparent;
-      font-weight: 700;
-      font-size: 24px;
-      cursor: pointer;
-      outline: none;
+    height: 48px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    background: transparent;
+    font-weight: 700;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
   }
 
   &__result {
-      margin: 16px;
+    margin: 16px;
   }
 }
