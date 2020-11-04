@@ -21,7 +21,6 @@
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.1",
     "mini-css-extract-plugin": "^0.9.0",
-    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "prettier": "^2.0.2",
     "sass-loader": "^8.0.2",
@@ -34,7 +33,6 @@
     "core-js": "^3.6.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5"
   }
