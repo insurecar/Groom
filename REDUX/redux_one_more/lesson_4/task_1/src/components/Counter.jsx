@@ -1,8 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { increment, decrement, reset } from "../counter.actions";
 
 const Counter = ({ counter, incr, decr, res }) => {
+  console.clear();
+  console.log(increment);
   return (
     <div className="counter">
       <button className="counter__button" onClick={decr}>
