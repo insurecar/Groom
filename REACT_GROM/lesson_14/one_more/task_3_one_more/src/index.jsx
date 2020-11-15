@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "./index";
+import "./index.scss";
+import Demo from "./Demo";
 
 const rootElement = document.querySelector("#root");
-ReactDOM.render(<App />, rootElement);
+
+ReactDOM.render(<Demo />, rootElement);

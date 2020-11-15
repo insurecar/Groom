@@ -1,16 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import Main from "./Main";
+import Alert from "./alert/Alert";
+import { AlertProvider } from "./alert/AlertContext";
 
-function App() {
-  const [renderCount, setRenderCount] = useState(1);
+export const AlertContext = React.createContext();
 
-  // useEffect(() => {
-  //   setRenderCount((prev) => prev + 1);
-  // });
-
+const App = () => {
   return (
-    <div>
-      <h1>Кількість рендері: {renderCount} </h1>
-    </div>
+    <AlertProvider value={alert}>
+      <div className="container pt-3">
+        <Alert />
+        <Main toggle={() => {}} />
+      </div>
+    </AlertProvider>
   );
-}
+};
+
 export default App;

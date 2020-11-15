@@ -1,56 +1,45 @@
 import React, { useState } from "react";
 
-function computedInitialCounter() {
-  console.log("Some calculation...");
+function computeInitialCounter() {
+  console.log("Some calculations...");
   return Math.trunc(Math.random() * 20);
 }
 
-function App() {
-  const [counter, setCounter] = useState(() => computedInitialCounter());
-
+const App = () => {
+  const [counter, setCounter] = useState(() => computeInitialCounter());
   const [state, setState] = useState({
     title: "Лічильник",
-    date: Date.now(),
+    date: "159",
   });
 
   const increment = () => {
-    // setCounter(counter + 1);
-    // setCounter(counter + 1);
-
-    setCounter((prevCounter) => {
-      return prevCounter + 1;
+    setCounter((prevState) => {
+      return prevState + 1;
     });
-
+    setCounter((prev) => prev + 1);
     setCounter((prev) => prev + 1);
   };
 
-  const decrement = () => {
-    setCounter(counter - 1);
-  };
-
-  const updateTitle = () => {
-    setState((prev) => ({
-      ...prev,
-      title: "Нова назва",
-    }));
-  };
+  function updateTtle() {
+    // setState({ ...state, title: "Нова назва" });
+    setState((prev) => ({ ...prev, title: "New" }));
+  }
 
   return (
-    <div>
+    <div className="box">
       <h1>Лічильник: {counter}</h1>
       <button onClick={increment} className="btn btn-success">
         Добавити
       </button>
-      <button onClick={decrement} className="btn btn-danger">
-        Видалити
+      <button onClick={() => setCounter(counter - 1)} className="btn btn-danger">
+        Забрати
       </button>
-
-      <button onClick={updateTitle} className="btn btn-default">
-        Змініти назву
+      <button onClick={updateTtle} className="btn btn-default">
+        Змінити назву
       </button>
-
       <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
   );
-}
+};
+
 export default App;
